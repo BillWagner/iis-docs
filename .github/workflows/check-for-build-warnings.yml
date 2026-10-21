@@ -1,13 +1,15 @@
 name: 'Status checker'
 
 on: 
-  pull_request_target:
+  pull_request:
     types: [opened, synchronize, reopened]
     branches-ignore:
       - live
 
 jobs:
   status_checker_job:
+    permissions:
+      pull-requests: write
     name: Look for build warnings
     runs-on: ubuntu-latest
     steps:
